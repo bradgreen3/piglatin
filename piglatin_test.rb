@@ -24,4 +24,11 @@ class PigLatinTest < Minitest::Test
     assert_equal 'oughthray', PigLatin.translate('through')
   end
 
+  def test_6
+    assert_equal 'oughthray', PigLatin.translate('ThRoUgH')
+  end
+
+  def test_7
+    assert_equal 'oughthray appleway igpay', PigLatin.translate('THROUGH apple PIG')
+  end
 end

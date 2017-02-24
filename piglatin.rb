@@ -7,7 +7,7 @@ class PigLatin
       english.split.each do |word|
         result << word_translator(word)
       end
-      result.join(" ")
+      result.join(" ").downcase
   end
 
   def self.word_translator(word)
