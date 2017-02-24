@@ -18,7 +18,6 @@ module PigLatin
     else
       translated = consonant_converter(word)
     end
-    translated
   end
 
   def consonant_converter(word)
