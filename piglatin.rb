@@ -1,13 +1,9 @@
-class PigLatin
-  attr_reader :english
+module PigLatin
+  extend self
 
   VOWELS = ["a", "e", "i", "o", "u"]
 
-  def initialize(english)
-    @english = english
-  end
-
-  def translate
+  def translate(english)
       result = []
       english.gsub(",", "").split.each do |word|
         result << word_translator(word)
