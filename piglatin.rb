@@ -21,7 +21,11 @@ class PigLatin
   end
 
   def self.consonant_converter(english)
-    english[1..-1] + english[0] + "ay"
+    result = english.split("")
+    while !VOWELS.include?(result.first.upcase)
+      result.rotate!
+    end
+    result.join("") + "ay"
   end
 
   def self.vowel_converter(english)
