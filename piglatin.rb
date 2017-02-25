@@ -1,35 +1,35 @@
-class PigLatin
+module PigLatin
+  extend self
 
-  VOWELS = ["A", "E", "I", "O", "U"]
+  VOWELS = ["a", "e", "i", "o", "u"]
 
-  def self.translate(english)
+  def translate(english)
       result = []
-      english.split.each do |word|
+      english.gsub(",", "").split.each do |word|
         result << word_translator(word)
       end
       result.join(" ").downcase
   end
 
-  def self.word_translator(word)
-    first_letter = word[0].upcase
+  def word_translator(word)
+    first_letter = word[0].downcase
     if VOWELS.include?(first_letter)
       translated = vowel_converter(word)
     else
       translated = consonant_converter(word)
     end
-    translated
   end
 
-  def self.consonant_converter(english)
-    result = english.split("")
-    while !VOWELS.include?(result.first.upcase)
+  def consonant_converter(word)
+    result = word.split("")
+    while !VOWELS.include?(result.first.downcase)
       result.rotate!
     end
     result.join("") + "ay"
   end
 
-  def self.vowel_converter(english)
-    english + "way"
+  def vowel_converter(word)
+    word + "way"
   end
 
 end
