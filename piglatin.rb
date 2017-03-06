@@ -3,16 +3,18 @@ class PigLatin
   VOWELS = ["A", "E", "I", "O", "U"]
 
   def self.translate(english)
-      result = []
-      english.split.each do |word|
-        result << word_translator(word)
-      end
-      result.join(" ").downcase
+    result = []
+    english.split(/(\W)/).each do |word|
+      result << word_translator(word)
+    end
+    result.join("")
   end
 
   def self.word_translator(word)
-    first_letter = word[0].upcase
-    if VOWELS.include?(first_letter)
+    word[0] == nil ? first_letter = "" : first_letter = word[0]
+    if word == " " || word == "" || word == "?" || word == ","
+      translated = word
+    elsif VOWELS.include?(first_letter.upcase)
       translated = vowel_converter(word)
     else
       translated = consonant_converter(word)
@@ -25,7 +27,8 @@ class PigLatin
     while !VOWELS.include?(result.first.upcase)
       result.rotate!
     end
-    result.join("") + "ay"
+    result = result.join("") + "ay"
+    result
   end
 
   def self.vowel_converter(english)

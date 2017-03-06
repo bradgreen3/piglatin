@@ -1,4 +1,4 @@
-gem 'minitest', '>= 5.0.0'
+ gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'piglatin'
 require 'minitest/pride'
@@ -25,10 +25,26 @@ class PigLatinTest < Minitest::Test
   end
 
   def test_6
-    assert_equal 'oughthray', PigLatin.translate('ThRoUgH')
+    assert_equal 'oUGhthray', PigLatin.translate('throUGh')
   end
 
   def test_7
-    assert_equal 'oughthray appleway igpay', PigLatin.translate('THROUGH apple PIG')
+    assert_equal 'oUgHThRay', PigLatin.translate('ThRoUgH')
+  end
+
+  def test_8
+    assert_equal 'OUGHTHRay appleway IGPay', PigLatin.translate('THROUGH apple PIG')
+  end
+
+  def test_9
+    assert_equal 'iHay, oWhay areway OUYay?', PigLatin.translate('Hi, hoW are YOU?')
+  end
+
+  def test_10
+    assert_equal 'oWhay', PigLatin.translate('hoW')
+  end
+
+  def test_11
+    assert_equal 'ellohay   owhay areway ouyay', PigLatin.translate('hello   how are you')
   end
 end
