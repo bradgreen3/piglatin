@@ -4,8 +4,8 @@ class PigLatin
 
   def self.translate(english)
     result = []
-    english.split(/(\W)/).each do |word|
-      result << word_translator(word)
+    result = english.split(/(\W)/).map do |word|
+      word_translator(word)
     end
     result.join("")
   end
